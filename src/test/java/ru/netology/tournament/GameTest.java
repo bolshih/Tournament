@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GameTest {
 
@@ -37,13 +38,13 @@ public class GameTest {
 
     @Test
     public void shouldAddPlayerToRegistr() {
-        ArrayList<String> expected = new ArrayList<>();
-        expected.add("Player1");
-        expected.add("Player2");
-        expected.add("Player3");
-        expected.add("Player4");
+        HashMap<String, Integer> expected = new HashMap<>();
+        expected.put("Player1", 10);
+        expected.put("Player2", 15);
+        expected.put("Player3", 15);
+        expected.put("Player4", 7);
 
-        ArrayList<String> actual = game.getRegPlayers();
+        HashMap actual = game.getRegPlayers();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -51,7 +52,7 @@ public class GameTest {
 //       @ParameterizedTest
 //       @CsvSource({"Player1, Player4, 1",
 //               "Player1, Player2, 2",
-//               "PLayer2, Player3, 0"
+//               "PLayer3, Player2, 0"
 //       })
 //       public void shouldPlayer1Win(String name1, String name2, int win){
 //
@@ -99,13 +100,5 @@ public class GameTest {
             ;
         });
 
-    }
-
-    @Test
-    public void shuldFindStrength() {
-        int expected = 0;
-        int actual = game.findPlayerStrength("Pkadf");
-
-        Assertions.assertEquals(expected, actual);
     }
 }
